@@ -1,7 +1,7 @@
 class CreateVisits < ActiveRecord::Migration
   def change
-    create_table :visits do |t|
-      t.uuid :visitor_id
+    create_table :visits,visitor_id: :uuid do |t|
+      # t.uuid :visitor_id
 
       # the rest are recommended but optional
       # simply remove the columns you don't want

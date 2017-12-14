@@ -13,11 +13,11 @@
 ActiveRecord::Schema.define(version: 20171130172334) do
 
   create_table "ahoy_events", force: :cascade do |t|
-    t.integer  "visit_id"
     t.integer  "user_id"
     t.string   "name"
     t.text     "properties"
     t.datetime "time"
+    t.integer  "visit_id"
     t.index ["time"], name: "index_ahoy_events_on_time"
     t.index ["user_id"], name: "index_ahoy_events_on_user_id"
     t.index ["visit_id"], name: "index_ahoy_events_on_visit_id"
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(version: 20171130172334) do
   create_table "comments", force: :cascade do |t|
     t.string   "title",            limit: 50, default: ""
     t.text     "body"
-    t.integer  "commentable_id"
     t.string   "commentable_type"
+    t.integer  "commentable_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -94,8 +94,8 @@ ActiveRecord::Schema.define(version: 20171130172334) do
   create_table "commercials", force: :cascade do |t|
     t.string   "commercial_id"
     t.string   "commercial_type"
-    t.integer  "commercialable_id"
     t.string   "commercialable_type"
+    t.integer  "commercialable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
@@ -405,8 +405,8 @@ ActiveRecord::Schema.define(version: 20171130172334) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
-    t.integer  "resource_id"
     t.string   "resource_type"
+    t.integer  "resource_id"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
   end
@@ -623,7 +623,6 @@ ActiveRecord::Schema.define(version: 20171130172334) do
   end
 
   create_table "visits", force: :cascade do |t|
-    t.binary   "visitor_id",       limit: 16
     t.string   "ip"
     t.text     "user_agent"
     t.text     "referrer"
